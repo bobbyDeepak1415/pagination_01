@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import "./App.css";
 import axios from "axios";
 
@@ -16,19 +14,13 @@ function App() {
     setComments(localCommentsArr.slice(0, 10));
   };
 
-
-
   useEffect(() => {
     fetchData();
   }, []);
 
   const handleClickBack = () => {};
 
-  const handleClickForward = () => {
-    if (localCommentsArr.length>0) {
-        
-    }
-  };
+  const handleClickForward = () => {};
 
   return (
     <div>
