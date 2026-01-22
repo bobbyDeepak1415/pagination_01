@@ -26,9 +26,17 @@ const startIndex=page*Page_Size
 
 const currentComments=allComments.slice(startIndex,startIndex+Page_Size)
 
-  const handleClickBack = () => {};
+  const handleClickBack = () => {
+    if(page>0){
+      setPage(prev=>prev-1)
+    }
+  };
 
-  const handleClickForward = () => {};
+  const handleClickForward = () => {
+    if(startIndex+Page_Size<allComments.length){
+      setPage(prev=>prev+1)
+    }
+  };
 
   return (
     <div>
