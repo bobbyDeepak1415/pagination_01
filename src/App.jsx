@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 
 function App() {
-  const [comments, setComments] = useState([]);
+  const [allComments, setAllComments] = useState([]);
 
   const fetchData = async () => {
     const response = await axios.get(
