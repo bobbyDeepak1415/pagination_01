@@ -16,7 +16,7 @@ function App() {
       );
 
       setAllComments(response.data);
-    };...
+    };
 
     fetchData();
   }, []);
