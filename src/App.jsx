@@ -38,8 +38,8 @@ const currentComments=allComments.slice(startIndex,startIndex+Page_Size)
         })}
       </ol>
 
-      <button onClick={handleClickBack}>back</button>
-      <button onClick={handleClickForward}>next</button>
+      <button disabled={page===0} onClick={handleClickBack}>back</button>
+      <button disabled={startIndex+Page_Size>=allComments.length} onClick={handleClickForward}>next</button>
     </div>
   );
 }
