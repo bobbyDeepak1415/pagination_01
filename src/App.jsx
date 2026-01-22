@@ -5,16 +5,17 @@ import axios from "axios";
 function App() {
   const [allComments, setAllComments] = useState([]);
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/comments",
-    );
-
-    let localCommentsArr = response.data;
-    setComments(localCommentsArr.slice(0, 10));
-  };
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/comments",
+      );
+
+      setAllComments(response.data);
+    };
+
     fetchData();
   }, []);
 
