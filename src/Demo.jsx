@@ -21,13 +21,17 @@ const Demo = () => {
     fetchData();
   }, []);
 
-  const handlePrev=()=>{
+  const handlePrev = () => {
+    if (page > 0) {
+      setPage((prev) => prev - 1);
+    }
+  };
 
-  }
-
-  const handleNext=()=>{
-    
-  }
+  const handleNext = () => {
+    if (startIndex + Page_Size <= allComments.length) {
+      setPage((prev) => prev + 1);
+    }
+  };
 
   const startIndex = page * Page_Size;
 
@@ -35,14 +39,21 @@ const Demo = () => {
 
   return (
     <div>
-      <ol>
+      <ol start={page * Page_Size + 1}>
         {currentComments.map((comment) => {
           return <li key={comment.id}>{comment.name}</li>;
         })}
       </ol>
 
-      <button onClick={handlePrev} disabled={page===0}>Prev</button>
-      <button disabled={startIndex+Page_Size>=allComments.length} onClick={handleNext}>Next</button>
+      <button onClick={handlePrev} disabled={page === 0}>
+        Prev
+      </button>
+      <button
+        disabled={startIndex + Page_Size >= allComments.length}
+        onClick={handleNext}
+      >
+        Next
+      </button>
     </div>
   );
 };
