@@ -1,14 +1,11 @@
 import axios from "axios";
+// import { comment } from "postcss";
 import React, { useEffect, useState } from "react";
 
 const PageSize = 10;
 
 const Demo = () => {
-  const [comments, setComments] = useState([]);
-
-  const [page,setPage]=useState(0)
-
-
+  const [allComments, setAllComments] = useState([]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -16,22 +13,25 @@ const Demo = () => {
         const response = axios.get(
           "https://jsonplaceholder.typicode.com/comments",
         );
-        setComments(response.data);
+        setAllComments(response.data);
       } catch (e) {
         console.log("failed to fecth", e);
       }
     };
 
-
-
     fetchData();
   });
 
-const startIndex=page*PageSize
-  const currentComments=comments.splice(startIndex,startIndex+PageSize)
-
-
-  return <div className="h-[100vh] bg-slate-400"></div>;
+  return (
+    <div>
+       <ol>
+        {allComments.map((comment) => {
+          return <li key={comment.id}>{comment.name}</li>;
+        })}
+      </ol> 
+      
+    </div>
+  );
 };
 
 export default Demo;
