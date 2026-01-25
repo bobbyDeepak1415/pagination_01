@@ -32,7 +32,7 @@ function App() {
   };
 
   const handleClickForward = () => {
-    if (startIndex + Page_Size < allComments.length) {
+    if (startIndex + Page_Size <= allComments.length) {
       setPage((prev) => prev + 1);
     }
   };
