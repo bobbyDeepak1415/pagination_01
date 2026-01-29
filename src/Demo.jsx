@@ -25,6 +25,16 @@ function Demo() {
     fetchData();
   });
 
+  const handleClickPrev = () => {
+    if (page > 0) setPage((prev) => prev - 1);
+  };
+
+  const handleClickNext = () => {
+    if (startIndex + Page_Size >= comments.length) return;
+
+    setPage((prev) => prev + 1);
+  };
+
   const startIndex = page * Page_Size;
 
   const currentComments = comments.slice(startIndex, startIndex + Page_Size);
@@ -32,15 +42,22 @@ function Demo() {
   return (
     <div style={{ height: "100vh", backgroundColor: "slategray" }}>
       <div>
-        <ul>
+        <ol start={startIndex + 1}>
           {currentComments.map((comment) => {
             return <li>{comment.name}</li>;
           })}
-        </ul>
+        </ol>
       </div>
       <div>
-        <button>Prev</button>
-        <button>Next</button>
+        <button disabled={page === 0} onClick={() => handleClickPrev()}>
+          Prev
+        </button>
+        <button
+          disabled={startIndex + Page_Size >= comments.length}
+          onClick={() => handleClickNext()}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
