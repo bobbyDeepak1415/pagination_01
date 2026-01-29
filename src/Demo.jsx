@@ -42,7 +42,7 @@ function Demo() {
   return (
     <div style={{ height: "100vh", backgroundColor: "slategray" }}>
       <div>
-        <ol start={startIndex + 1}>
+        <ol start={page * Page_Size + 1}>
           {currentComments.map((comment) => {
             return <li>{comment.name}</li>;
           })}
