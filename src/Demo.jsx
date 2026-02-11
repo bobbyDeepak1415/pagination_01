@@ -4,10 +4,10 @@ const Demo = () => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
       // setCount(prev=>prev + 1);
       setCount(count+1);
-    }
+    // }
   };
 
   return (
@@ -19,9 +19,3 @@ const Demo = () => {
 
 export default Demo;
 
-
-.box{
-  display:flex
-  margin-right:0
-  align-items:center
-}
