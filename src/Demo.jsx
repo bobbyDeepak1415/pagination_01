@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Demo = () => {
-  return <div></div>;
+
+  const [count,setCount]=useState(0)
+
+  const handleClick=()=>{
+    for(let i=0;i<5;i++){
+      setCount(count+1)
+    }
+  }
+
+  return <div>
+
+    <button onClick={handleClick}>{count}</button>
+  </div>;
 };
 
 export default Demo;
