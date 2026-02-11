@@ -4,10 +4,10 @@ const Demo = () => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
-    // for (let i = 0; i < 5; i++) {
-      // setCount(prev=>prev + 1);
-      setCount(count+1);
-    // }
+    for (let i = 0; i < 5; i++) {
+    setCount(prev=>prev + 1);
+    // setCount(count + 1);
+    }
   };
 
   return (
@@ -18,4 +18,4 @@ const Demo = () => {
 };
 
 export default Demo;
-
+..
