@@ -5,7 +5,8 @@ const Demo = () => {
 
   const handleClick = () => {
     for (let i = 0; i < 5; i++) {
-      setCount(prev=>prev + 1);
+      // setCount(prev=>prev + 1);
+      setCount(count+1);
     }
   };
 
@@ -17,3 +18,10 @@ const Demo = () => {
 };
 
 export default Demo;
+
+
+.box{
+  display:flex
+  margin-right:0
+  align-items:center
+}
