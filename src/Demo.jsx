@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Demo = () => {
-  return "Hello"
+  return "Hello";
 };
 
 export default Demo;
+....
