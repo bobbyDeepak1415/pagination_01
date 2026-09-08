@@ -19,9 +19,14 @@ const Demo = () => {
        let currentComments=allComments.slice(startIndex,startIndex+PAGE_SIZE)
 
 const handlePrevClick=()=>{
+  if(page===0) return
+  setPage(prev=>prev-1)
 
 }
 const handleNextClick=()=>{
+  if(startIndex+PAGE_SIZE<allComments.length){
+    setPage(prev=>prev+1)
+  }
 
 }
 
@@ -29,7 +34,7 @@ const handleNextClick=()=>{
   return (
     <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
       <h2>Comment List:</h2>
-      <ol>
+      <ol start={page*PAGE_SIZE+1}>
 
       {currentComments.map((comment)=>{
         return <li key={comment.id}>{comment.name}</li>
