@@ -19,7 +19,10 @@ const Demo = () => {
        let currentComments=allComments.slice(startIndex,startIndex+PAGE_SIZE)
 
 const handlePrevClick=()=>{
-  
+
+}
+const handleNextClick=()=>{
+
 }
 
 
@@ -32,8 +35,9 @@ const handlePrevClick=()=>{
         return <li key={comment.id}>{comment.name}</li>
       })}
       </ol>
-      <button onClick={handlePrevClick}>Prev</button>
-      <p>Page:{page}</p>
+      <button disabled={page===0} onClick={handlePrevClick}>Prev</button>
+      <button disabled={startIndex+PAGE_SIZE>=allComments.length} onClick={handleNextClick}>Prev</button>
+      <p>Page:{page+1}</p>
     </div>
   )
 }
