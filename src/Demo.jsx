@@ -36,11 +36,10 @@ setAllComments(res.data)
   }
 
   const handleNextClick=()=>{
+    if(startIndex+PAGE_SIZE>=allComments.length) return
+    setPage(prev=>prev+1)
 
-    if(PAGE_SIZE+startIndex<=allComments.length){
 
-      setPage(prev=>prev+1)
-    }
 
   }
 
@@ -54,8 +53,8 @@ setAllComments(res.data)
       })}
       </ol>
 
-      <button disabled={page===0} onClick={handlePrevClick}>prev</button>
-      <button onClick={handleNextClick} disabled={startIndex+PAGE_SIZE>=allComments.length}>Next</button>
+<button disabled={page===0} onClick={handlePrevClick}>prev</button>
+<button disabled={startIndex+PAGE_SIZE>=allComments.length} onClick={handleNextClick}>next</button>
       
     </div>
   )
