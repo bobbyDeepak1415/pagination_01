@@ -27,15 +27,35 @@ setAllComments(res.data)
 
   const currentComments=allComments.slice(startIndex,startIndex+PAGE_SIZE)
 
+
+  const handlePrevClick=()=>{
+    if(page===0) return
+
+    setPage(prev=>prev-1)
+
+  }
+
+  const handleNextClick=()=>{
+
+    if(PAGE_SIZE+startIndex<=allComments.length){
+
+      setPage(prev=>prev+1)
+    }
+
+  }
+
   return (
-    <div>
+    <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
       <h2>Comments List:</h2>
-      <ol>
+      <ol start={page*PAGE_SIZE+1}>
 
       {currentComments.map((comment)=>{
         return <li key={comment.id}>{comment.name}</li>
       })}
       </ol>
+
+      <button disabled={page===0} onClick={handlePrevClick}>prev</button>
+      <button onClick={handleNextClick} disabled={startIndex+PAGE_SIZE>=allComments.length}>Next</button>
       
     </div>
   )
