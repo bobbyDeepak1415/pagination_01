@@ -4,14 +4,8 @@ const Demo = () => {
 
   
   const [item,setItem]=useState("")
-const [itemList,setItemList]=useState(()=>{
-  const itemList=localStorage.getItem("itemList")
-  itemList ? JSON.parse(itemList) : []
-})
+const [itemList,setItemList]=useState([])
 
-useEffect(()=>{
-localStorage.setItem("itemList",JSON.stringify(itemList)) 
-},[])
 
 
 const handleAddItem=()=>{
