@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Demo = () => {
 
   
   const [item,setItem]=useState("")
-const [itemList,setItemList]=useState([])
+const [itemList,setItemList]=useState(()=>{
+  const itemList=localStorage.getItem("itemList")
+  itemList ? JSON.parse(itemList) : []
+})
+
+useEffect(()=>{
+localStorage.setItem("itemList",JSON.stringify(itemList)) 
+},[])
 
 
 const handleAddItem=()=>{
@@ -12,6 +19,8 @@ const handleAddItem=()=>{
   setItemList([...itemList,item])
   setItem("")
 }
+
+
 
   return (
     <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
