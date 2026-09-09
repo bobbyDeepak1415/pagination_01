@@ -1,22 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Demo = () => {
 
-  const inputFileRef=useRef(0)
-
-  const handleClick=()=>{
-    inputFileRef.current.click()
-    inputFileRef.current.value=""
-
-  }
-
+  const [item,setItem]=useState("")
   return (
-    <div>
-      <input ref={inputFileRef} type='file' hidden/>
-      <button onClick={handleClick}>Browse files</button>
+    <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
+
+      <input value={item} onChange={(e)=>setItem(e.target.value)}/>
+      
     </div>
   )
 }
 
 export default Demo
-
