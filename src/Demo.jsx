@@ -16,7 +16,7 @@ const fileNames=files.map((file)=>{
   }
 })
 
-setFiles(prev=>[...prev,fileNames])
+setFiles(prev=>[...prev,...fileNames])
 
   }
 
