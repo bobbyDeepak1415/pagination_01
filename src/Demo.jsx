@@ -7,7 +7,7 @@ const Demo = () => {
   const [files,setFiles]=useState([])
 
 
-  const handleSelect=()=>{
+  const handleSelect=(e)=>{
 const files=Array.from(e.target.files)
 
 const fileNames=files.map((file)=>{
@@ -16,7 +16,7 @@ const fileNames=files.map((file)=>{
   }
 })
 
-setFiles(fileNames)
+setFiles(prev=>[...prev,fileNames])
 
   }
 
@@ -37,7 +37,7 @@ fileRef.current.value=""
 <ul>
 
 {files.map((file,index)=>{
-  return <li key={index}>{file}</li>
+  return <li key={index}>{file.name}</li>
 })}
 </ul>
 
