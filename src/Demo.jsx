@@ -6,7 +6,10 @@ const Demo = () => {
   const [list,setList]=useState([])
 
   const handleClick=()=>{
-    
+    if(!item.trim()) return
+
+    setList([item])
+setItem("")
   }
 
   return (
