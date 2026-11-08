@@ -1,46 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import useFetchData from './useFetchData'
 
 const Demo = () => {
 
-  const fileRef=useRef(null)
-
-  const [files,setFiles]=useState([])
+  const url="https://jsonplaceholder.typicode.com/comments"
 
 
-  const handleSelect=(e)=>{
-const files=Array.from(e.target.files)
+  const {allComments}=useFetchData(url)
 
-const fileNames=files.map((file)=>{
-  return {
-    name:file.name
-  }
-})
-
-setFiles(prev=>[...prev,...fileNames])
-
-  }
-
-  const handleClick=()=>{
-fileRef.current.click()
-fileRef.current.value=""
-
-  }
-
+  
   return (
     <div>
-    
-<input ref={fileRef} onChange={(e)=>handleSelect(e)} type='file' multiple hidden/>
-<button onClick={handleClick}>Browse files</button>
-<br></br>
-<br></br>
-<br></br>
+      <h2>Your comments here:</h2>
 <ul>
 
-{files.map((file,index)=>{
-  return <li key={index}>{file.name}</li>
+{allComments.map((comment)=>{
+  return <li key={comment.id}>{comment.title}</li>
 })}
 </ul>
-
     </div>
   )
 }

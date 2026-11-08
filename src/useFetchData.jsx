@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 const useFetchData = (url) => {
   const [allComments, setComments] = useState([]);
 
+  
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
