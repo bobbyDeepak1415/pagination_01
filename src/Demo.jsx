@@ -1,41 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const Demo = () => {
 
-  
-  const [item,setItem]=useState("")
-const [itemList,setItemList]=useState(()=>{
-  const items=localStorage.getItem("itemList")
-return items? JSON.parse(items) :[]
-})
+  const [item,setItem]=useState('')
+  const [list,setList]=useState([])
 
-useEffect(()=>{
-localStorage.setItem("items",JSON.stringify(itemList))
-},[itemList])
-
-
-
-const handleAddItem=()=>{
-  if(!item.trim()) return
-  setItemList([...itemList,item])
-  setItem("")
-}
-
-
+  const handleClick=()=>{
+    
+  }
 
   return (
-    <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
+    <div>
+    
+<input value={item} onChange={(e)=>setItem(e.target.value)} type='text'/>
+<button onClick={handleClick}>Add to list</button>
+<br></br>
+<br></br>
+<br></br>
+<ul>
 
-      <input value={item} onChange={(e)=>setItem(e.target.value)}/>
-      <button onClick={handleAddItem}>Add Item</button>
-      <div>
-        <ul>
+{list.map((item,index)=>{
+  return <li key={index}>{item}</li>
+})}
+</ul>
 
-        {itemList.map((item,index)=>{
-          return <li key={index}>{item}</li>
-        })}
-        </ul>
-      </div>
     </div>
   )
 }
