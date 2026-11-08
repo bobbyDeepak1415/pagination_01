@@ -1,29 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Demo = () => {
 
-  const [item,setItem]=useState('')
-  const [list,setList]=useState([])
+  const fileRef=useRef(null)
+
+  const [files,setFiles]=useState([])
+
+
+  const handleSelect=()=>{
+const files=Array.from(e.target.files)
+
+const fileNames=files.map((file)=>{
+  return {
+    name:file.name
+  }
+})
+
+setFiles(fileNames)
+
+  }
 
   const handleClick=()=>{
-    if(!item.trim()) return
+fileRef.current.click()
+fileRef.current.value=""
 
-    setList([item])
-setItem("")
   }
 
   return (
     <div>
     
-<input value={item} onChange={(e)=>setItem(e.target.value)} type='text'/>
-<button onClick={handleClick}>Add to list</button>
+<input ref={fileRef} onChange={(e)=>handleSelect(e)} type='file' multiple hidden/>
+<button onClick={handleClick}>Browse files</button>
 <br></br>
 <br></br>
 <br></br>
 <ul>
 
-{list.map((item,index)=>{
-  return <li key={index}>{item}</li>
+{files.map((file,index)=>{
+  return <li key={index}>{file}</li>
 })}
 </ul>
 
